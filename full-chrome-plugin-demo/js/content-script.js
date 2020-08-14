@@ -1,44 +1,41 @@
 ﻿console.log(`这是content script!正在访问${location.host}`);
-if (
-	location.host == 'www.bilibili.com' ||
-	location.host == 'www.acfun.cn'||
-	location.host == 'search.bilibili.com' ||
-	location.host == 'www.zhihu.com'||
-	location.host == 'lol.gamepedia.com'||
-	location.host == 'www.op.gg'||
-	location.host == '101.qq.com'||
-	location.host == 'www.pixiv.net'||
-	location.host == 'bbs.hupu.com'
-) {
-	var a = new Date()
-	var b = a.getHours() * 60 + a.getMinutes()
-	if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay()) < 6) {
-		window.stop();
-		$("html").html(`<head/><body/>`)
-		$("body").html(`
-		<div class="center"><p>工作期间，禁止访问</p></div>
-		<style>
-		html,body{height: 100%;}
-		body{font-family: 'Microsoft Yahei';margin:0;padding:0;}
-		.center {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 100%;
-			font-size: 48px;
-			color: #CCC;
+
+
+var array = [`bilibili.com`,`acfun.cn`,`zhihu.com`,`lol.gamepedia.com`,`op.gg`,`101.qq.com`,`pixiv.net`,`hupu.com`,`tieba.baidu.com`,`taobao.com`,`tmall.com`,`jd.com`]
+
+array.forEach((url)=>{
+	if (location.host.lastIndexOf(url)>0 ) {
+		var a = new Date()
+		var b = a.getHours() * 60 + a.getMinutes()
+		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay()) < 6) {
+			window.stop();
+			$("html").html(`<head/><body/>`)
+			$("body").html(`
+			<div class="center"><p>工作期间，禁止访问</p></div>
+			<style>
+			html,body{height: 100%;}
+			body{font-family: 'Microsoft Yahei';margin:0;padding:0;}
+			.center {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+				font-size: 48px;
+				color: #7c9cef;
+			}
+			.wrapper {
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 40px;
+				font-size: 16px;
+			}
+			</style>
+			`);
 		}
-		.wrapper {
-			position: absolute;
-			top: 0;
-			left: 0;
-			padding: 40px;
-			font-size: 16px;
-		}
-		</style>
-		`);
 	}
-}
+})
+
 
 // 注意，必须设置了run_at=document_start 此段代码才会生效
 document.addEventListener('DOMContentLoaded', function () {
@@ -81,12 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		let interval = 0;
 		function removeAdByJs() {
 			$('[data-tuiguang]').parents('[data-click]').remove();
-			$('.ec_tuiguang_pplink').parent().parent().remove();
+			$('.ec_tuiguang_pplink').parents(".c-container").css("background","red").remove();
 			console.log(111)
 			$('#s_mp').remove();
 			$('#s_lm_wrap').remove();
 			$('#s_content_2').remove();
-
+			$('.nor-src-wrap').parents(".c-container").css("background","red").remove();
 		}
 		fuckBaiduAD();
 		initCustomPanel();

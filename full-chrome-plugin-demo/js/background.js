@@ -19,6 +19,16 @@ chrome.contextMenus.create({
 		chrome.tabs.create({url: 'https://www.baidu.com/s?ie=utf-8&wd=' + encodeURI(params.selectionText)});
 	}
 });
+chrome.contextMenus.create({
+	title: '复制搜索：%s', // %s表示选中的文字
+	contexts: ['selection'], // 只有当选中文字时才会出现此右键菜单
+	onclick: function(params)
+	{
+		console.log(params.selectionText)
+		chrome.clipboardData.setData("Text",params.selectionText);
+
+	}
+});
 
 
 
