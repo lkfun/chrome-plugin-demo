@@ -7,7 +7,7 @@ array.forEach((url)=>{
 	if (location.host.lastIndexOf(url)>0 ) {
 		var a = new Date()
 		var b = a.getHours() * 60 + a.getMinutes()
-		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay()) < 6) {
+		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay()< 6) ) {
 			window.stop();
 			$("html").html(`<head/><body/>`)
 			$("body").html(`
