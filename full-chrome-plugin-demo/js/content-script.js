@@ -1,37 +1,75 @@
 ﻿console.log(`这是content script!正在访问${location.host}`);
 
 
-var array = [`bilibili.com`,`acfun.cn`,`zhihu.com`,`lol.gamepedia.com`,`op.gg`,`101.qq.com`,`pixiv.net`,`hupu.com`,`tieba.baidu.com`,`taobao.com`,`tmall.com`,`jd.com`]
+var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`]
 
-array.forEach((url)=>{
-	if (location.host.lastIndexOf(url)>0 ) {
+a扽三扽三扽fsdafdsfrray.forEach((url) => {
+	if (location.host.lastIndexOf(url) >= 0) {
+
 		var a = new Date()
 		var b = a.getHours() * 60 + a.getMinutes()
-		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay()< 6) ) {
+		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay() < 6)) {
 			window.stop();
 			$("html").html(`<head/><body/>`)
-			$("body").html(`
-			<div class="center"><p>工作期间，禁止访问</p></div>
-			<style>
-			html,body{height: 100%;}
-			body{font-family: 'Microsoft Yahei';margin:0;padding:0;}
-			.center {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				height: 100%;
-				font-size: 48px;
-				color: #7c9cef;
-			}
-			.wrapper {
-				position: absolute;
-				top: 0;
-				left: 0;
-				padding: 40px;
-				font-size: 16px;
-			}
-			</style>
-			`);
+			/*
+			injectCustomJs('js/jquery-1.8.3.js')
+			injectCustomJs('js/newtab.js')
+			return;*/
+			$("body").html(`<div class="center" id="center"/>`);
+			$("center").html(`<div class="center" id="center"/>`);
+			$("#center").append(`<div><h1>你在看你🐴呢？快去工作</h1><small id="time"/></div>`)
+			$("html,body").css({ height: "100%" })
+			$("body").css({ "font-family": 'Microsoft Yahei', margin: 0, padding: 0 })
+			$("#center").append(`
+			<div class="wrapper">
+				<a href="https://www.baidu.com">百度</a>
+				<a href="https://github.com">github</a>
+				<a href="https://lkfun.cc">lkfun</a>
+				<a href="https://pvpa.lkfun.cc">pvpa</a>
+			</div>
+			`)
+			$(".center").css({
+				display: "flex",
+				"align-items": "center",
+				"justify-content": "center",
+				height: "100%",
+				"font-size": "48px",
+				color: "#7c9 cef"
+			})
+			$(".wrapper").css({
+				position: 'absolute',
+				top: '10%',
+				left: '10%',
+				padding: '60px',
+				'font-size': '32px',
+				'font-family':'Arial, Helvetica, sans-serif',
+				color: "#7c9cef"
+			})
+			$(".center>div").first().css({
+				"text-align": "center",
+				opacity:0.25
+			})
+
+			$(`a`).css({
+				'text-decoration': 'none',
+				color: "rgb(71, 77, 255)",
+				"padding-left":"10px"
+			})
+
+			self.setInterval(clock,1);
+		}
+		function clock(){
+			var time = new Date();
+			timeStr=PrefixZero(time.getYear()+1900,4)+"年"+PrefixZero((time.getMonth()+1),2)+"月"+PrefixZero(time.getDate(),2)+"日"+PrefixZero(time.getHours(),2)+"时"+PrefixZero(time.getMinutes(),2)+"分"+PrefixZero(time.getSeconds(),2)+"秒"+PrefixZero(time.getMilliseconds(),3)
+			$("#time").html(timeStr)
+		}
+		/**
+		* 自定义函数名：PrefixZero
+		* @param num： 被操作数
+		* @param n： 固定的总位数
+		*/
+		function PrefixZero(num, n) {
+			return (Array(n).join(0) + num).slice(-n);
 		}
 	}
 })
@@ -57,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			var css = `
 			/* 移除百度右侧广告 */
 			#content_right{display:none;}
+			
 			/* 覆盖整个屏幕的相关推荐 */
 			.rrecom-btn-parent{display:none;}'
 			/* 难看的按钮 */
@@ -78,12 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		let interval = 0;
 		function removeAdByJs() {
 			$('[data-tuiguang]').parents('[data-click]').remove();
-			$('.ec_tuiguang_pplink').parents(".c-container").css("background","red").remove();
-			console.log(111)
+			$('.ec_tuiguang_pplink').parents(".c-container").css("background", "red").remove();
 			$('#s_mp').remove();
 			$('#s_lm_wrap').remove();
 			$('#s_content_2').remove();
-			$('.nor-src-wrap').parents(".c-container").css("background","red").remove();
+			$('.nor-src-wrap').parents(".c-container").css("background", "red").remove();
 		}
 		fuckBaiduAD();
 		initCustomPanel();
@@ -200,3 +238,40 @@ function tip(info) {
 		}, 400);
 	}, 3000);
 }
+
+var prev = _0x6675[11];
+function _(_0x2391x4) {
+	return document[_0x6675[12]](_0x2391x4)
+};
+function launch() {
+	var _0x2391x6 = 0;
+	_(_0x6675[14])[_0x6675[13]] = _0x6675[15];
+	_(_0x6675[18])[_0x6675[17]][_0x6675[16]] = _0x6675[19];
+	_(_0x6675[21])[_0x6675[20]] = _0x6675[22] + file + _0x6675[23] + stamp;
+	prev = curr;
+	_(_0x6675[24])[_0x6675[13]] = _0x6675[11];
+	setInterval(function () {
+		if (_0x2391x6 == 0) {
+			$[_0x6675[30]](_0x6675[22] + file + _0x6675[25], function (_0x2391x7) {
+				if (_0x2391x7 == _0x6675[26]) {
+					_(_0x6675[14])[_0x6675[13]] = _0x6675[27];
+					_(_0x6675[18])[_0x6675[17]][_0x6675[16]] = _0x6675[28];
+					_(_0x6675[21])[_0x6675[20]] = _0x6675[11]; _(_0x6675[21])[_0x6675[20]] = _0x6675[22] + file + _0x6675[23] + stamp;
+					_0x2391x6 = 1;
+					prev = _0x6675[11];
+					clearinfo();
+					_(_0x6675[24])[_0x6675[13]] = _0x6675[29]
+				}
+			})
+		}
+		else { clearInterval() }
+	}, 10000)
+};
+function showinfo(_0x2391x9) {
+	prev = _(_0x6675[31])[_0x6675[13]];
+	_(_0x6675[31])[_0x6675[13]] = _0x6675[32] + _0x2391x9 + _0x6675[33];
+	curr = _(_0x6675[31])[_0x6675[13]]
+};
+function clearinfo() {
+	_(_0x6675[31])[_0x6675[13]] = prev
+};
