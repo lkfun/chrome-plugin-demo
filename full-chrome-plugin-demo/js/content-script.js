@@ -1,7 +1,7 @@
 ﻿console.log(`这是content script!正在访问${location.host}`);
 
 
-var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`]
+var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`]
 
 array.forEach((url) => {
 	if (location.host.lastIndexOf(url) >= 0) {
@@ -238,40 +238,3 @@ function tip(info) {
 		}, 400);
 	}, 3000);
 }
-
-var prev = _0x6675[11];
-function _(_0x2391x4) {
-	return document[_0x6675[12]](_0x2391x4)
-};
-function launch() {
-	var _0x2391x6 = 0;
-	_(_0x6675[14])[_0x6675[13]] = _0x6675[15];
-	_(_0x6675[18])[_0x6675[17]][_0x6675[16]] = _0x6675[19];
-	_(_0x6675[21])[_0x6675[20]] = _0x6675[22] + file + _0x6675[23] + stamp;
-	prev = curr;
-	_(_0x6675[24])[_0x6675[13]] = _0x6675[11];
-	setInterval(function () {
-		if (_0x2391x6 == 0) {
-			$[_0x6675[30]](_0x6675[22] + file + _0x6675[25], function (_0x2391x7) {
-				if (_0x2391x7 == _0x6675[26]) {
-					_(_0x6675[14])[_0x6675[13]] = _0x6675[27];
-					_(_0x6675[18])[_0x6675[17]][_0x6675[16]] = _0x6675[28];
-					_(_0x6675[21])[_0x6675[20]] = _0x6675[11]; _(_0x6675[21])[_0x6675[20]] = _0x6675[22] + file + _0x6675[23] + stamp;
-					_0x2391x6 = 1;
-					prev = _0x6675[11];
-					clearinfo();
-					_(_0x6675[24])[_0x6675[13]] = _0x6675[29]
-				}
-			})
-		}
-		else { clearInterval() }
-	}, 10000)
-};
-function showinfo(_0x2391x9) {
-	prev = _(_0x6675[31])[_0x6675[13]];
-	_(_0x6675[31])[_0x6675[13]] = _0x6675[32] + _0x2391x9 + _0x6675[33];
-	curr = _(_0x6675[31])[_0x6675[13]]
-};
-function clearinfo() {
-	_(_0x6675[31])[_0x6675[13]] = prev
-};
