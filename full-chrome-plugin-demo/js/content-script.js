@@ -237,4 +237,4 @@ function tip(info) {
 			tipCount--;
 		}, 400);
 	}, 3000);
-}
+} 
