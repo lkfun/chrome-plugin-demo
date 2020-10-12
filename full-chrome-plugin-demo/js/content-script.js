@@ -1,7 +1,7 @@
 ﻿console.log(`这是content script!正在访问${location.host}`);
 
 
-var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`]
+var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`,`new.qq.com`,`lol.qq.com`,`k.sina.com.cn`,`sports.eastday.com`,`haokan.baidu.com`,`sports.163.com`,`www.dongqiudi.com`]
 
 array.forEach((url) => {
 	if (location.host.lastIndexOf(url) >= 0) {
