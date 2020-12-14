@@ -1,7 +1,118 @@
 ﻿console.log(`这是content script!正在访问${location.host}`);
 
 
-var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`,`new.qq.com`,`lol.qq.com`,`k.sina.com.cn`,`sports.eastday.com`,`haokan.baidu.com`,`sports.163.com`,`www.dongqiudi.com`]
+var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`,`new.qq.com`,`lol.qq.com`,`k.sina.com.cn`,`sports.eastday.com`,`haokan.baidu.com`,`sports.163.com`,`www.dongqiudi.com`,`cache.baiducontent.com`,`qidian.com`,`news.baidu.com`,`hao123.com`,`news.china.com`]
+var motto=`海纳百川，有容乃大；壁立千仞，无欲则刚。
+少壮不努力，老大徒伤悲。
+世事多因忙里错，好人多半苦中来。
+三更灯火五更鸡，正是男儿读书时。黑发不知勤学早，白首方悔读书迟。
+不飞则已，一飞冲天；不鸣则已，一鸣惊人。
+青，取之于蓝而青于蓝；冰，水为之而寒于水。
+志当存高远。
+发愤忘食，乐以忘忧，不知老之将至云尔。
+我劝天公重抖擞，不拘一格降人才。
+盛年不重来，一日难再晨。及时当勉励，岁月不待人。
+吾生也有涯，而知也无涯。
+穷则变，变则通，通则久。
+古之立大事者，不惟有超世之才，亦必有坚忍不拔之志。
+天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为。
+绳锯木断，水滴石穿。
+将相本无种，男儿当自强。
+尺有所短；寸有所长。物有所不足；智有所不明。
+天生我材必有用，千金散尽还复来。
+寄蜉蝣于天地，渺沧海之一粟。
+欲穷千里目，更上一层楼。
+沉舟侧畔千帆过,病树前头万木春。
+忧劳可以兴国，逸豫可以亡身。
+一寸光阴一寸金，寸金难买寸光阴。
+山河破碎风飘絮，身世浮沉雨打萍。
+鸟欲高飞先振翅，人求上进先读书。
+花经雨后香微淡，松到秋深色尚苍。
+天下事以难而废者十之一，以惰而废者十之九。
+俗子胸襟谁识我？英雄末路当磨折。
+工欲善其事，必先利其器。
+不是一番寒彻骨，怎得梅花扑鼻香！
+一日不书，百事荒芜。
+穷且益坚，不坠青云之志。
+千磨万击还坚劲，任尔东西南北风。
+精诚所加，金石为开。
+三人行，必有我师焉。择其善者而从之，其不善者而改之。
+路漫漫其修道远，吾将上下而求索。
+山高月小，水落石出。
+盛名之下，其实难副。
+江山代有才人出，各领风骚数百年。
+锲而不舍，金石可镂。
+与善人居，如入兰芷之室，久而不闻其香；与恶人居。如入鲍鱼之肆，久而不闻其香
+仁者见之谓之仁，智者见之谓之智。
+谁言寸草心，报得三春晖。
+我自横刀向天笑，去留肝胆两昆仑。
+老骥伏枥，志在千里。烈士暮年，壮心不已。
+青，取之于蓝而青于蓝。
+士不可不弘毅，任重而道远。
+老当益壮，宁知白首之心；穷且益坚，不坠青云之志。
+莫愁前路无知己，天下谁人不识君。
+位卑未敢忘忧国。
+以铜为镜，可以正衣冠；以古为镜，可以知兴替；以人为镜，可以明得失。
+靡不有初，鲜克有终。
+梨花院落溶溶月，柳絮池塘淡淡风。
+己所不欲，勿施于人。
+千里之行，始于足下。
+业精于勤，荒于嬉，行成于思，毁于随。
+见义不为，非勇也。
+近水楼台先得月，向阳花木易为春。
+落红不是无情物，化作春泥更护花。
+天下兴亡，匹夫有责。
+心事浩茫连广宇，于无声处听惊雷。
+路漫漫其修远今，吾将上下而求索。
+皮之不存，毛将焉附？
+祸兮，福之所倚；福兮，锅之所伏。
+莫等闲，白了少年头，空悲切！
+它山之石，可以攻玉。
+盛年不重来，一日难再晨，及时当勉励，岁月不待人。
+山河破碎风飘絮，身世浮沉雨打萍。
+前不见古人，后不见来者。念天地之悠悠，独怆然而涕下。
+山不在高，有仙则名；水不在深，有龙则灵。
+信言不美，美言不信。善者不辩，辩者不善。
+欲穷千里目，更上一层楼。
+新沐者必弹冠，新浴者必振衣。
+一日暴之，十日寒之，未有能生者也。
+物以类聚，人以群分。
+流水不腐，户枢不蠹。
+身无彩凤双飞翼，心有灵犀一点通。
+木秀于林，风必摧之。
+星星之火，可以燎原。
+不耻下问。
+人固有一死，或重于泰山，或轻于鸿毛，用之所趋异也。
+疏影横斜水清浅，暗香浮动月黄昏。
+试玉要烧三日满，辨材须待七年期。
+士为知己者死。
+梅须逊雪三分白，雪却输梅一段香。
+生当作人杰，死亦为鬼雄。
+兼听则明，偏信则暗。
+海上生明月，天涯共此时。
+山不厌高，水不厌深。
+其曲弥高，其和弥寡。
+天时不如地利，地利不如人和。
+玩物丧志。
+闻道有先后，术业有专攻。
+天下事有难易乎，为之，则难者亦易矣；不为，则易者亦难矣。
+失之东隅，收之桑榆。
+绳锯木断，水滴石穿。
+清水出芙蓉，天然去雕饰。
+九州生气恃风雷，万马齐喑究可哀。我劝天公重抖擞，不拘一格降人才。
+莫等闭，白了少年头，空悲切。
+其身正，不令而行；其身不正，虽令不从。
+为人性僻耽佳句，语不惊人死不休。
+学而不思则罔，思而不学则殆。
+问渠那得清如许，为有源头活水来。
+海阔凭鱼跃，天高任鸟飞。
+穷则独善其身，达则兼善天下。
+夕阳无限好，只是近黄昏。
+勿以恶小而为之，勿以善小而不为。
+蚍蜉撼大树，可笑不自量。
+天行有常，不为尧存，不为桀亡。
+	君子之交淡若水，小人之交甘若醴。
+`.replaceAll('。','<br/>').replaceAll('，','<br/>').replaceAll('；','<br/>').split(`\n`)
 
 array.forEach((url) => {
 	if (location.host.lastIndexOf(url) >= 0) {
@@ -17,7 +128,7 @@ array.forEach((url) => {
 			return;*/
 			$("body").html(`<div class="center" id="center"/>`);
 			$("center").html(`<div class="center" id="center"/>`);
-			$("#center").append(`<div><h1>你在看你🐴呢？快去工作</h1><small id="time"/></div>`)
+			$("#center").append(`<div><h1>`+motto[Math.floor(motto.length*Math.random())] +`</h1><small id="time"/></div>`)
 			$("html,body").css({ height: "100%" })
 			$("body").css({ "font-family": 'Microsoft Yahei', margin: 0, padding: 0 })
 			$("#center").append(`
@@ -47,9 +158,17 @@ array.forEach((url) => {
 			})
 			$(".center>div").first().css({
 				"text-align": "center",
-				opacity:0.25
+				opacity:0.25,
+				"max-width":"90%"
 			})
 
+			$(".center>div>h1").first().css({
+				"font-family": "方正黄草简体,钟齐毛笔简体",
+				"max-height":"55%",
+				"writing-mode": "vertical-rl",
+				"text-align": "left",
+				"margin": "0 auto"
+			})
 			$(`a`).css({
 				'text-decoration': 'none',
 				color: "rgb(71, 77, 255)",
@@ -128,6 +247,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		initCustomEventListen();
 	}
 });
+document.addEventListener("beforeload", function(event) {
+    console.log("resource", event.url);
+}, true);
 
 function initCustomPanel() {
 	return;
