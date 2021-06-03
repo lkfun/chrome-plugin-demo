@@ -1,4 +1,4 @@
-﻿console.log(`这是content script!正在访问${location.host}`);
+console.log(`这是content script!正在访问${location.host}`);
 
 
 var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`,`new.qq.com`,`lol.qq.com`,`k.sina.com.cn`,`sports.eastday.com`,`haokan.baidu.com`,`sports.163.com`,`www.dongqiudi.com`,`cache.baiducontent.com`,`qidian.com`,`news.baidu.com`,`hao123.com`,`news.china.com`]
@@ -116,9 +116,6 @@ var motto=`海纳百川，有容乃大；壁立千仞，无欲则刚。
 
 array.forEach((url) => {
 	if (location.host.lastIndexOf(url) >= 0) {
-
-		var a = new Date()
-		var b = a.getHours() * 60 + a.getMinutes()
 		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay() < 6)) {
 			window.stop();
 			$("html").html(`<head/><body/>`)
