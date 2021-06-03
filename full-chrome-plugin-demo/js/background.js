@@ -162,6 +162,7 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
 	// 简单的音视频检测
 	// 大部分网站视频的type并不是media，且视频做了防下载处理，所以这里仅仅是为了演示效果，无实际意义
 	if(details.type == 'media') {
+		return;
 		chrome.notifications.create(null, {
 			type: 'basic',
 			iconUrl: 'img/icon.png',

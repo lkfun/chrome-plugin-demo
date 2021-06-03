@@ -83,7 +83,7 @@ function sendMessageToContentScriptByPostMessage(data)
 		return realXHR;
 	}
    
- 	window.XMLHttpRequest = newXHR;
+ 	//window.XMLHttpRequest = newXHR;//直接替换旧的会影响B站的一些功能
 })();
 var Gpins_data = {};
 // 监听页面的ajax

@@ -1,7 +1,8 @@
-console.log(`这是content script!正在访问${location.host}`);
+﻿console.log(`这是content script!正在访问${location.host}`);
 
 
-var array = [`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`,`new.qq.com`,`lol.qq.com`,`k.sina.com.cn`,`sports.eastday.com`,`haokan.baidu.com`,`sports.163.com`,`www.dongqiudi.com`,`cache.baiducontent.com`,`qidian.com`,`news.baidu.com`,`hao123.com`,`news.china.com`]
+var array = [
+	`bilibili.com`, `acfun.cn`, `zhihu.com`, `lol.gamepedia.com`, `op.gg`, `101.qq.com`, `pixiv.net`, `hupu.com`, `tieba.baidu.com`, `taobao.com`, `tmall.com`, `jd.com`, `baijiahao.baidu.com`, `mbd.baidu.com`, `nga.178.com`,`bbs.nga.cn`,`hkss.huijiwiki.com`,`playok.com`,`kaiheila.cn`,`steampowered.com`,`steamcommunity.com`,`douyu.com`,`huya.com`,`moegirl.org`,`weibo.com`,`sohu.com`,`new.qq.com`,`lol.qq.com`,`k.sina.com.cn`,`sports.eastday.com`,`haokan.baidu.com`,`sports.163.com`,`www.dongqiudi.com`,`cache.baiducontent.com`,`qidian.com`,`news.baidu.com`,`hao123.com`,`news.china.com`,`b23.tv`,`youtube.com`,`login.sina.com`,`biliplus.com`]
 var motto=`海纳百川，有容乃大；壁立千仞，无欲则刚。
 少壮不努力，老大徒伤悲。
 世事多因忙里错，好人多半苦中来。
@@ -111,9 +112,11 @@ var motto=`海纳百川，有容乃大；壁立千仞，无欲则刚。
 勿以恶小而为之，勿以善小而不为。
 蚍蜉撼大树，可笑不自量。
 天行有常，不为尧存，不为桀亡。
-	君子之交淡若水，小人之交甘若醴。
+君子之交淡若水，小人之交甘若醴。
 `.replaceAll('。','<br/>').replaceAll('，','<br/>').replaceAll('；','<br/>').split(`\n`)
 
+var a = new Date()
+var b = a.getHours() * 60 + a.getMinutes()
 array.forEach((url) => {
 	if (location.host.lastIndexOf(url) >= 0) {
 		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay() < 6)) {
@@ -142,7 +145,7 @@ array.forEach((url) => {
 				"justify-content": "center",
 				height: "100%",
 				"font-size": "48px",
-				color: "#7c9 cef"
+				color: "#7c9cef"
 			})
 			$(".wrapper").css({
 				position: 'absolute',
@@ -156,7 +159,8 @@ array.forEach((url) => {
 			$(".center>div").first().css({
 				"text-align": "center",
 				opacity:0.25,
-				"max-width":"90%"
+				"max-width":"90%",
+				"user-select": "none"
 			})
 
 			$(".center>div>h1").first().css({
@@ -173,11 +177,15 @@ array.forEach((url) => {
 			})
 
 			self.setInterval(clock,1);
+			
 		}
 		function clock(){
 			var time = new Date();
 			timeStr=PrefixZero(time.getYear()+1900,4)+"年"+PrefixZero((time.getMonth()+1),2)+"月"+PrefixZero(time.getDate(),2)+"日"+PrefixZero(time.getHours(),2)+"时"+PrefixZero(time.getMinutes(),2)+"分"+PrefixZero(time.getSeconds(),2)+"秒"+PrefixZero(time.getMilliseconds(),3)
 			$("#time").html(timeStr)
+			document.title = timeStr;
+
+
 		}
 		/**
 		* 自定义函数名：PrefixZero
@@ -188,6 +196,11 @@ array.forEach((url) => {
 			return (Array(n).join(0) + num).slice(-n);
 		}
 	}
+	if (location.host.lastIndexOf(`google.com`) >= 0) {
+		if (((b > 480 && b < 720) || (b > 870 && b < 1080)) && (a.getDay() > 0 && a.getDay() < 6)) {
+			$
+		}
+	}
 })
 
 
@@ -196,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// 注入自定义JS
 	injectCustomJs();
 	// 给谷歌搜索结果的超链接增加 _target="blank"
-	if (location.host == 'www.google.com.tw') {
+	if (location.host == 'www.google.com') {
 		var objs = document.querySelectorAll('h3.r a');
 		for (var i = 0; i < objs.length; i++) {
 			objs[i].setAttribute('_target', 'blank');
@@ -215,7 +228,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			/* 覆盖整个屏幕的相关推荐 */
 			.rrecom-btn-parent{display:none;}'
 			/* 难看的按钮 */
-			.result-op.xpath-log{display:none !important;}`;
+			.result-op.xpath-log{display:none !important;}
+			/**/
+			#s_wrap{display:none;}
+			#s_mp{display:none;}
+			`;
 			temp.innerHTML = css;
 			console.log('已注入自定义CSS！');
 			// 屏蔽百度推广信息
@@ -232,11 +249,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		let interval = 0;
 		function removeAdByJs() {
+			$('#s_mp').remove();
 			$('[data-tuiguang]').parents('[data-click]').remove();
 			$('.ec_tuiguang_pplink').parents(".c-container").css("background", "red").remove();
-			$('#s_mp').remove();
-			$('#s_lm_wrap').remove();
-			$('#s_content_2').remove();
 			$('.nor-src-wrap').parents(".c-container").css("background", "red").remove();
 		}
 		fuckBaiduAD();
